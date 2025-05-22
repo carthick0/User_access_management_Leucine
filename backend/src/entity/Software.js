@@ -1,12 +1,22 @@
-const { EntitySchema } = require("typeorm");
+const { EntitySchema } = require('typeorm');
 
-module.exports.Software = new EntitySchema({
-  name: "Software",
-  tableName: "software",
+module.exports = new EntitySchema({
+  name: 'Software',
+  tableName: 'software',
   columns: {
-    id: { type: Number, primary: true, generated: true },
-    name: { type: String },
-    description: { type: "text" },
-    accessLevels: { type: "simple-array" },
+    id: {
+      primary: true,
+      type: 'int',
+      generated: true,
+    },
+    name: {
+      type: 'varchar',
+    },
+    description: {
+      type: 'text',
+    },
+    accessLevels: {
+      type: 'simple-array', 
+    },
   },
 });

@@ -1,16 +1,37 @@
-const { EntitySchema } = require("typeorm");
+const { EntitySchema } = require('typeorm');
 
-module.exports.Request = new EntitySchema({
-  name: "Request",
-  tableName: "requests",
+module.exports = new EntitySchema({
+  name: 'Request',
+  tableName: 'requests',
   columns: {
-    id: { type: Number, primary: true, generated: true },
-    accessType: { type: "varchar" },
-    reason: { type: "text" },
-    status: { type: "varchar" },
+    id: {
+      primary: true,
+      type: 'int',
+      generated: true,
+    },
+    accessType: {
+      type: 'varchar',
+    },
+    reason: {
+      type: 'text',
+    },
+    status: {
+      type: 'varchar',
+      default: 'Pending',
+    },
   },
   relations: {
-    user: { type: "many-to-one", target: "User" },
-    software: { type: "many-to-one", target: "Software" },
+    user: {
+      target: 'User',
+      type: 'many-to-one',
+      joinColumn: true,
+      eager: true,
+    },
+    software: {
+      target: 'Software',
+      type: 'many-to-one',
+      joinColumn: true,
+      eager: true,
+    },
   },
 });

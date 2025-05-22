@@ -1,7 +1,8 @@
 const { DataSource } = require("typeorm");
-const { User } = require("../entity/User");
-const { Software } = require("../entity/Software");
-const { Request } = require("../entity/Request");
+const {User} = require("../entity/User");
+const {Software} = require("../entity/Software");
+const {Request} = require("../entity/Request");
+
 
 const AppDataSource = new DataSource({
   type: "postgres",
